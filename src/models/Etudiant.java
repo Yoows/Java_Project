@@ -1,11 +1,13 @@
 package models;
 
+import exceptions.AgeSaisiException;
+
 public class Etudiant extends Personne {
 	private int matricule ; 
 	private String formation; 
 	
 
-	public Etudiant(String nom, String prenom, char sexe, int age, int matricule, String formation) {
+	public Etudiant(String nom, String prenom, char sexe, int age, int matricule, String formation) throws AgeSaisiException {
 		super(nom, prenom, sexe, age);
 		this.setMatricule(matricule);
 		this.setFormation(formation); 	

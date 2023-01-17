@@ -16,7 +16,7 @@ public abstract class Personne {
 	
 	
 	
-	public Personne(String nom, String prenom, char sexe, int age) {
+	public Personne(String nom, String prenom, char sexe, int age) throws AgeSaisiException {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.sexe = sexe;

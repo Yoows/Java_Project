@@ -1,25 +1,15 @@
+import exceptions.AgeSaisiException;
 import models.Etudiant;
 
 public class Main {
 
-	public static void main(String[] args) {
-		Etudiant etudiant = null ;
-		int [] myArray = { 10, 20, 30 } ; 
+	public static void main(String[] args) throws AgeSaisiException {
+		Etudiant etudiant = new Etudiant("Ivan", "Yossanguem", 'M', 17, 1011, "MASTER ISI");
+		etudiant.sePresenter();
 		try {
-			etudiant.sePresenter();
-		}catch (NullPointerException e) {
-			System.err.println(e.getMessage());
-		}
-		try {
-			System.out.println(myArray[10]);
-		}catch (NullPointerException e) {
-			System.err.println(e.getMessage());
-		}
-		
-		
-		
-	
-		
+			etudiant.setAge(-1);
+		} catch (AgeSaisiException e) {
+			System.out.println(e.getMessage());
+		}	
 	}
-
 }
