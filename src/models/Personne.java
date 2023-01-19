@@ -1,7 +1,5 @@
 package models;
 
-import exceptions.AgeSaisiException;
-
 public abstract class Personne {
 	
 	protected String nom ; 
@@ -11,12 +9,27 @@ public abstract class Personne {
 	
 	private static int nbPersonne;
 	public void sePresenter() {
+		if (nom == null || prenom == null) {
+			throw new RuntimeException("Nom et prenom doivent être renseignés.");
+		}
+		if (nom.isEmpty()|| prenom.isEmpty()) {
+			throw new RuntimeException("Nom et prénom ne doivent pas être vides.");
+		}
 		System.out.println("Je m'appelle " + nom + " " + prenom + ", j'ai " + age + " ans " + "sexe : " + sexe) ;
 	}
 	
 	
 	
-	public Personne(String nom, String prenom, char sexe, int age) throws AgeSaisiException {
+	public Personne(String nom, String prenom, char sexe) {
+		super();
+		this.nom = nom;
+		this.prenom = prenom;
+		this.sexe = sexe;
+	}
+
+
+
+	public Personne(String nom, String prenom, char sexe, int age) throws Exception {
 		this.nom = nom;
 		this.prenom = prenom;
 		this.sexe = sexe;
@@ -68,9 +81,9 @@ public abstract class Personne {
 
 
 
-	public void setAge(int age) throws AgeSaisiException {
+	public void setAge(int age) throws Exception {
 		if (age < 0) {
-			throw new AgeSaisiException("Age non valide : age doit > 0.");
+			throw new Exception("Age non valide : age doit > 0.");
 		}
 		this.age = age > 0 ? age : this.age ; 
 	}
